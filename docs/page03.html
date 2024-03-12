@@ -1,0 +1,135 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        h2 {
+            font-weight: bolder;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2>Register Here</h2>
+    </center>
+
+    <center>
+        <form name="registrationForm" onsubmit="return validateForm()">
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="Enter your username" required><br><br>
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Enter your password" required><br><br>
+            <label>Confirm Password:</label>
+            <input type="password" name="confirm_password" placeholder="Confirm your password" required><br><br>
+            <label>E-mail:</label>
+            <input type="email" name="email" placeholder="Enter your email" required><br><br>
+            <label>Mobile:</label>
+            <input type="tel" name="mobile" placeholder="Enter your mobile number" required><br><br>
+            <label>Date of Birth:</label>
+            <input type="date" name="dob" required><br><br>
+            <input type="submit" value="Register">
+            <input type="reset" value="Refresh"><br><br>
+        </form>
+    </center>
+
+
+
+    <script>
+        function validateForm() {
+            var x = document.forms["registrationForm"]["username"].value;
+            var y = document.forms["registrationForm"]["password"].value;
+            var z = document.forms["registrationForm"]["confirm_password"].value;
+            var a = document.forms["registrationForm"]["email"].value;
+            var b = document.forms["registrationForm"]["mobile"].value;
+            if (x.length < 6 ) {
+                alert("Username must be of atleast 6 characters");
+                return false;
+            }
+
+            //password must be of atleast 8 characters
+            if (y.length < 8 ) {
+                alert("Password must be of atleast 8 characters");
+                return false;
+            }
+
+            // password contains atleast one capital letter
+            var capital = false;
+            for (var i = 0; i < y.length; i++) {
+                if (y[i] >= 'A' && y[i] <= 'Z') {
+                    capital = true;
+                    break;
+                }
+            }
+            if (!capital) {
+                alert("Password must contain atleast one capital letter");
+                return false;
+            }
+
+            // password contains atleast one small letter
+            var small = false;
+            for (var i = 0; i < y.length; i++) {
+                if (y[i] >= 'a' && y[i] <= 'z') {
+                    small = true;
+                    break;
+                }
+            }
+            if (!small) {
+                alert("Password must contain atleast one small letter");
+                return false;
+            }
+
+            // password contains atleast one digit
+            var digit = false;
+            for (var i = 0; i < y.length; i++) {
+                if (y[i] >= '0' && y[i] <= '9') {
+                    digit = true;
+                    break;
+                }
+            }
+            if (!digit) {
+                alert("Password must contain atleast one digit");
+                return false;
+            }
+
+            // password contains atleast one special character
+            var special = false;
+            for (var i = 0; i < y.length; i++) {
+                if (y[i] == '@' || y[i] == '#' || y[i] == '$' || y[i] == '%' || y[i] == '^' || y[i] == '&' || y[i] == '*' || y[i] == '(' || y[i] == ')' || y[i] == '-' || y[i] == '+' || y[i] == '=') {
+                    special = true;
+                    break;
+                }
+            }
+            if (!special) {
+                alert("Password must contain atleast one special character");
+                return false;
+            }
+
+
+            if (y != z) {
+                alert("Password and confirm password fields must match with each other");
+                return false;
+            }
+            if (a.indexOf("@") == -1 || a.length < 6) {
+                alert("E-mail id must be of the form “@domain.com”");
+                return false;
+            }
+            if (b.length != 10 || b[0] < 6 || b[0] > 9) {
+                alert("Mobile number must be of 10 digits only and starting digit must be any number from 6-9");
+                return false;
+            }
+
+            alert("Registration Successful");
+
+        }
+    </script>
+
+</body>
+</html>
