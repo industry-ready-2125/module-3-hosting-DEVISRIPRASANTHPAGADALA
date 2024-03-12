@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        body{
+            background-color: rgb(174, 246, 246);
+        }
+
+        button{
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 3%;
+            font-weight: bold;
+        }
+
+        button:hover{
+            background-color: grey;
+            color: #fff;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <center><h2>Login Here</h2></center>
+    <center><form name="loginForm" onsubmit="return validateForm()">
+        <label >Username:</label>
+        <input type="text" name="username" placeholder="Enter your user name" required><br><br>
+        <label >Password:</label>
+        <input type="password" name="password" placeholder="Enter your password" required><br><br>
+        <input type="submit" value="Login">
+        <input type="reset" value="Refresh"><br><br>
+    </form>
+</center>
+<center><button><a href="forgot.html">Forgot Password</a></button></center>
+
+
+<script>
+    function validateForm() {
+        var x = document.forms["loginForm"]["username"].value;
+        var y = document.forms["loginForm"]["password"].value;
+
+        if ((x == "devisriprashanth" && y == "Devisri@123") || (x == "satya" && y == "Satyaf23#")) {
+            alert("Login successful");
+        }
+
+        else {
+            alert("Invalid Username or password");
+            return false;
+        }
+        
+    }
+</script>
+<head>
+</body>
+</html>
